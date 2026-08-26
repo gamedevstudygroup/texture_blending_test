@@ -1,0 +1,40 @@
+/* side by side view in marimo
+  https://github.com/marimo-team/marimo/issues/3327
+*/
+
+/* Set grid layout for each cell */
+.marimo-cell:not(:has(.output > .markdown)) {
+    display: grid;
+    grid-template-columns: 40% 60%;
+
+
+    .relative:has(.output),
+    .tray {
+        position: sticky;
+        top: 20px;
+        align-self: start;
+    }
+}
+
+/* cell name */
+.relative-group {
+    grid-column: span 2;
+}
+
+/* Naive fix for rounded corner */
+.tray {
+    border-radius: 8px;
+}
+
+/* these interfere with clicking on right side of output*/
+.tray>.shoulder-right {
+    display: None;
+}
+
+.tray:after {
+    display: None;
+}
+
+.m-auto {
+    max-width: unset !important;
+}
